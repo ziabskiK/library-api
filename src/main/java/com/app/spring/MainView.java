@@ -40,8 +40,7 @@ public class MainView extends VerticalLayout {
         });
 
       //  add(label, layout);
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        setAlignItems(Alignment.CENTER);
+
 
     }
     private void setupLayout(){
@@ -54,9 +53,15 @@ public class MainView extends VerticalLayout {
         addNewCustomer = new Button("Add new book");
 
         layout.add(searchForCustomers, addNewCustomer);
+        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        setAlignItems(Alignment.CENTER);
         this.add(label, layout);
 
+
     }
-    
+
+    private void searchBooks(){
+
+    }
 
 }

@@ -41,6 +41,9 @@ public class AddBookView extends VerticalLayout {
         this.add(new VerticalLayout(new Label("Enter author: "), authorTF));
         Button addBook = new Button(new Icon(VaadinIcon.PLUS), c-> add());
 
+
+
+
         add(addBook);
 
 

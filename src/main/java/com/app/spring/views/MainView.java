@@ -3,6 +3,7 @@ package com.app.spring.views;
 import com.app.spring.data.Book;
 import com.app.spring.implementation.BookList;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -42,7 +43,11 @@ public class MainView extends VerticalLayout {
         layout.add(searchForCustomers, addNewCustomer);
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         setAlignItems(Alignment.CENTER);
+
+
         this.add(label, layout);
+
+
 
 
     }
@@ -52,12 +57,20 @@ public class MainView extends VerticalLayout {
         List<Book> customers = bookList.bookList();
 
 
-        bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        bookLayout.removeAll();
-        customers.forEach(customer ->
-                bookLayout.add(new Label(customer.toString())));
-        this.add(bookLayout);
+//        bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+//        bookLayout.removeAll();
+//        customers.forEach(customer ->
+//                bookLayout.add(new Label(customer.toString())));
+//        this.add(bookLayout);
 
+        Grid<Book> grid = new Grid<>();
+        grid.setItems(customers);
+        grid.addColumn(Book::getTitle).setHeader("Title");
+        grid.addColumn(Book::getAuthorFirstName).setHeader("Author first name");
+        grid.addColumn(Book::getAuthorLastName).setHeader("Author last name");
+
+
+        add(grid);
     }
 
     private void navigate() {

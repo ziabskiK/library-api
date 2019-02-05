@@ -21,13 +21,15 @@ public class MainView extends VerticalLayout {
     private BookList bookList;
 
     private VerticalLayout bookLayout;
+
     public MainView() {
 
 
         setupLayout();
 
     }
-    private void setupLayout(){
+
+    private void setupLayout() {
         HorizontalLayout layout = new HorizontalLayout();
         bookLayout = new VerticalLayout();
 
@@ -45,27 +47,24 @@ public class MainView extends VerticalLayout {
 
     }
 
-    private void searchBooks(){
+    private void searchBooks() {
 
         List<Book> customers = bookList.bookList();
 
 
         bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-       // searchForCustomers.addClickListener(click -> {
-           // this.remove(bookLayout);
-            bookLayout.removeAll();
-            customers.forEach(customer ->
-                    bookLayout.add(new Label(customer.toString())));
-            this.add(bookLayout);
+        bookLayout.removeAll();
+        customers.forEach(customer ->
+                bookLayout.add(new Label(customer.toString())));
+        this.add(bookLayout);
 
-        //});
     }
-    private void navigate(){
+
+    private void navigate() {
         Optional optional = getUI();
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             getUI().get().navigate("add");
         }
-       // getUI().get().navigate("add");
     }
 
 }

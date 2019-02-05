@@ -20,4 +20,7 @@ public class BookServiceImplementation {
     public List<Book> findAll(){
         return repository.findAll();
     }
+    public Book addNewBook(Book book){
+        return repository.save(book);
+    }
 }

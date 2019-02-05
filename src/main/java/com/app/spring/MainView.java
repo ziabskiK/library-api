@@ -1,6 +1,7 @@
 package com.app.spring;
 
 import com.app.spring.data.Book;
+import com.app.spring.implementation.BookList;
 import com.app.spring.implementation.BookServiceImplementation;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
@@ -20,27 +21,14 @@ public class MainView extends VerticalLayout {
     private Button addNewCustomer ;
 
 
-    public MainView(@Autowired BookServiceImplementation service) {
 
-        //HorizontalLayout layout = new HorizontalLayout();
+    @Autowired
+    private BookList bookList;
+
+    public MainView() {
+
 
         setupLayout();
-
-        List<Book> customers = service.findAll();
-        VerticalLayout bookLayout = new VerticalLayout();
-
-        bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        searchForCustomers.addClickListener(click -> {
-            remove(bookLayout);
-            bookLayout.removeAll();
-            customers.forEach(customer ->
-                    bookLayout.add(new Label(customer.toString())));
-            add(bookLayout);
-
-        });
-
-      //  add(label, layout);
-
 
     }
     private void setupLayout(){
@@ -49,7 +37,7 @@ public class MainView extends VerticalLayout {
         Label label = new Label("Welcome in basic CRUD application using Spring and Vaadin!");
         label.setHeight("20");
 
-        searchForCustomers = new Button("Search for books");
+        searchForCustomers = new Button("Search for books", click -> searchBooks());
         addNewCustomer = new Button("Add new book");
 
         layout.add(searchForCustomers, addNewCustomer);
@@ -62,6 +50,18 @@ public class MainView extends VerticalLayout {
 
     private void searchBooks(){
 
+        List<Book> customers = bookList.bookList();
+        VerticalLayout bookLayout = new VerticalLayout();
+
+        bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+       // searchForCustomers.addClickListener(click -> {
+            remove(bookLayout);
+            bookLayout.removeAll();
+            customers.forEach(customer ->
+                    bookLayout.add(new Label(customer.toString())));
+            this.add(bookLayout);
+
+        //});
     }
 
 }

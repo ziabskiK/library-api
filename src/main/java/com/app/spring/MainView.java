@@ -16,7 +16,6 @@ import java.util.List;
 public class MainView extends VerticalLayout {
 
 
-    private HorizontalLayout layout;
     private Button searchForCustomers ;
     private Button addNewCustomer ;
 
@@ -46,8 +45,7 @@ public class MainView extends VerticalLayout {
 
     }
     private void setupLayout(){
-        layout = new HorizontalLayout();
-        layout.add(searchForCustomers, addNewCustomer);
+        HorizontalLayout layout = new HorizontalLayout();
 
         Label label = new Label("Welcome in basic CRUD application using Spring and Vaadin!");
         label.setHeight("20");
@@ -55,6 +53,7 @@ public class MainView extends VerticalLayout {
         searchForCustomers = new Button("Search for books");
         addNewCustomer = new Button("Add new book");
 
+        layout.add(searchForCustomers, addNewCustomer);
         this.add(label, layout);
 
     }

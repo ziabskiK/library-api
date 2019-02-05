@@ -28,7 +28,6 @@ public class MainView extends VerticalLayout {
         setupLayout();
 
         List<Book> customers = service.findAll();
-        layout.add(searchForCustomers, addNewCustomer);
         VerticalLayout bookLayout = new VerticalLayout();
 
         bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
@@ -48,10 +47,14 @@ public class MainView extends VerticalLayout {
     }
     private void setupLayout(){
         layout = new HorizontalLayout();
+        layout.add(searchForCustomers, addNewCustomer);
+
         Label label = new Label("Welcome in basic CRUD application using Spring and Vaadin!");
         label.setHeight("20");
+
         searchForCustomers = new Button("Search for books");
         addNewCustomer = new Button("Add new book");
+
         this.add(label, layout);
 
     }

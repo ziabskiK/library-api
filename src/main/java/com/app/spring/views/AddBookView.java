@@ -1,7 +1,7 @@
 package com.app.spring.views;
 
 import com.app.spring.data.Book;
-import com.app.spring.implementation.BookServiceImplementation;
+import com.app.spring.implementation.BookService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Route(value = "add")
 public class AddBookView extends VerticalLayout {
     @Autowired
-    BookServiceImplementation service;
+    BookService service;
 
     private TextField titleTF;
     private TextField authorTF;

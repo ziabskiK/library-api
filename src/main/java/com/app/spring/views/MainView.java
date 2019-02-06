@@ -1,7 +1,7 @@
 package com.app.spring.views;
 
 import com.app.spring.data.Book;
-import com.app.spring.implementation.BookList;
+import com.app.spring.implementation.BookService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
@@ -19,7 +19,7 @@ public class MainView extends VerticalLayout {
 
 
     @Autowired
-    private BookList bookList;
+    private BookService bookList;
 
     private VerticalLayout bookLayout;
 
@@ -54,7 +54,7 @@ public class MainView extends VerticalLayout {
 
     private void searchBooks() {
 
-        List<Book> customers = bookList.bookList();
+        List<Book> customers = bookList.findAll();
 
 
 //        bookLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);

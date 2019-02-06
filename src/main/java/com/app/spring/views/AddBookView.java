@@ -23,31 +23,33 @@ public class AddBookView extends VerticalLayout {
 
     public AddBookView() {
         setupForm();
-        add(new Button("Go to home", e-> navigateToHome()));
+        add(new Button("Go to home", e -> navigateToHome()));
     }
 
-    private void navigateToHome(){
+    private void navigateToHome() {
         Optional o = getUI();
-        if (o.isPresent()){
+        if (o.isPresent()) {
             getUI().get().navigate("home");
         }
     }
-    private void setupForm(){
+
+    private void setupForm() {
         //setAlignItems(Alignment.CENTER);
         titleTF = new TextField();
         authorTF = new TextField();
         this.add(new VerticalLayout(new Label("Enter title: "), titleTF));
         this.add(new VerticalLayout(new Label("Enter author: "), authorTF));
-        Button addBook = new Button(new Icon(VaadinIcon.PLUS), c-> add());
+        Button addBook = new Button(new Icon(VaadinIcon.PLUS), c -> add());
 
         add(addBook);
 
     }
-    private void add(){
+
+    private void add() {
 
         String title = titleTF.getValue();
         String[] author = authorTF.getValue().trim().split(" ");
-        Book book = new Book(author[author.length-1],title, author[0]);
+        Book book = new Book(author[author.length - 1], title, author[0]);
         service.addNewBook(book);
     }
 }

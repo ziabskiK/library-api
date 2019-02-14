@@ -3,6 +3,7 @@ package com.app.spring.views;
 import com.app.spring.data.Book;
 import com.app.spring.implementation.BookService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -20,6 +21,7 @@ public class AddBookView extends VerticalLayout {
 
     private TextField titleTF;
     private TextField authorTF;
+    private Checkbox check;
 
     public AddBookView() {
         setupForm();
@@ -40,8 +42,10 @@ public class AddBookView extends VerticalLayout {
         this.add(new VerticalLayout(new Label("Enter title: "), titleTF));
         this.add(new VerticalLayout(new Label("Enter author: "), authorTF));
         Button addBook = new Button(new Icon(VaadinIcon.PLUS), c -> add());
+        check = new Checkbox("Return home after add");
 
-        add(addBook);
+
+        add(addBook, check);
 
     }
 
@@ -51,5 +55,10 @@ public class AddBookView extends VerticalLayout {
         String[] author = authorTF.getValue().trim().split(" ");
         Book book = new Book(author[author.length - 1], title, author[0]);
         service.addNewBook(book);
+        titleTF.clear();
+        authorTF.clear();
+        if (check.getValue().equals(true)){
+            navigateToHome();
+        }
     }
 }

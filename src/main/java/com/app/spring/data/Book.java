@@ -2,7 +2,8 @@ package com.app.spring.data;
 
 import javax.persistence.*;
 
-@Entity(name = "Book")
+@Entity
+@Table(name = "Book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,24 +14,20 @@ public class Book {
 
 
     @Column(name = "author_first_name")
-
     private String authorFirstName;
+
     @Column(name = "author_last_name")
     private String authorLastName;
-    @Column(name = "short_review")
-    private String shortReview;
-
-
 
 
     public Book() {
     }
 
-    public Book(String authorLastName,String title, String authorFirstName, String shortReview) {
+    public Book(String authorLastName, String authorFirstName, String title) {
         this.title = title;
         this.authorFirstName = authorFirstName;
         this.authorLastName = authorLastName;
-        this.shortReview = shortReview;
+
     }
 
     public int getId() {
@@ -65,14 +62,10 @@ public class Book {
         this.authorLastName = authorLastName;
     }
 
-    public String getShortReview(){
-        return shortReview;
-    }
-    public void setShortReview(String shortReview){this.shortReview = shortReview;}
 
     @Override
     public String toString() {
         return
-                "ID: " + id +" Title: " + title + " Author: " + authorFirstName +" "+authorLastName;
+                "ID: " + id + " Title: " + title + " Author: " + authorFirstName + " " + authorLastName;
     }
 }

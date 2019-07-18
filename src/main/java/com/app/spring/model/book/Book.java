@@ -1,4 +1,4 @@
-package com.app.spring.data;
+package com.app.spring.model.book;
 
 import javax.persistence.*;
 

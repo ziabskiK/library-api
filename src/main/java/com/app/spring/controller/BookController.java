@@ -1,6 +1,6 @@
 package com.app.spring.controller;
 
-import com.app.spring.data.Book;
+import com.app.spring.model.book.Book;
 import com.app.spring.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +29,24 @@ public class BookController {
         return bookService.save(book);
     }
 
-    @GetMapping(value = "/book")
-    public List<Book> booksByAuthorLastName(@RequestParam("name") String name) {
-        return bookService.findBooksByAuthorLastName(name);
+    @GetMapping(value = "/book/author")
+    public List<Book> booksByAuthorLastName(@RequestParam("author") String author) {
+        return bookService.findBooksByAuthorLastName(author);
+    }
+
+    @GetMapping(value = "/book/title")
+    public List<Book> booksByTitle(@RequestParam("title") String title) {
+        return bookService.findBookByTitle(title);
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return
+                "Admin logged in";
+    }
+
+    @GetMapping("/user")
+    public String user() {
+        return "User logged in";
     }
 }

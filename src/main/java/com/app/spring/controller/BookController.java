@@ -1,5 +1,6 @@
 package com.app.spring.controller;
 
+import com.app.spring.exception.BookNotFoundException;
 import com.app.spring.model.book.Book;
 import com.app.spring.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
@@ -39,14 +40,20 @@ public class BookController {
         return bookService.findBookByTitle(title);
     }
 
+    @GetMapping(value = "/book/{id}")
+    public Book getBookById(@PathVariable("id") int id) {
+        return bookService.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+
+    }
+
     @GetMapping("/admin")
     public String admin() {
-        return
-                "Admin logged in";
+        return "Admin logged in";
     }
 
     @GetMapping("/user")
     public String user() {
         return "User logged in";
     }
+
 }

@@ -20,12 +20,14 @@ import java.util.Set;
 public class JwtFilter extends BasicAuthenticationFilter {
 
 
-    private JwtFilter(AuthenticationManager authenticationManager) {
+    protected JwtFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+
         String header = request.getHeader("Authorization");
 
         UsernamePasswordAuthenticationToken authResult = getAuthenticationByToken(header);
@@ -38,10 +40,23 @@ public class JwtFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthenticationByToken(String header) {
 
+        DecodedJWT jwt;
+        String username = "";
+        String role = "x";
 
-        DecodedJWT jwt = JWT.decode(header.replaceFirst("Bearer ", ""));
-        String username = jwt.getClaims().get("name").asString();
-        String role = jwt.getClaims().get("role").asString();
+
+        if (header != null) {
+            jwt = JWT.decode(header.replaceFirst("Bearer ", ""));
+            username = jwt.getClaims().get("name").asString();
+            role = jwt.getClaims().get("role").asString();
+        }
+
+
+
+
+
+
+
 
         Set<SimpleGrantedAuthority> simpleGrantedAuthorities = Collections.singleton(new SimpleGrantedAuthority(role));
 

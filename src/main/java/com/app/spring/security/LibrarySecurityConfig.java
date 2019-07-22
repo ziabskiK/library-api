@@ -10,7 +10,8 @@ public class LibrarySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/user").authenticated()
+        http.authorizeRequests().antMatchers("/book/**").permitAll()
+                .antMatchers("/user").authenticated()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .and()
                 .addFilter(new JwtFilter(authenticationManager()));

@@ -1,3 +1,4 @@
 # API for Library system
 
-Already simple GET mappings
+Endpoints for Library Management System 
+Security based on JWT with roles: User, Admin

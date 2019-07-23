@@ -1,48 +1,44 @@
 package com.app.spring.controller;
 
-import com.app.spring.exception.BookNotFoundException;
 import com.app.spring.model.book.Book;
-import com.app.spring.repository.BookRepository;
+import com.app.spring.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin
 public class BookController {
 
-    private BookRepository bookService;
+    private BookService bookService;
 
-    public BookController(BookRepository bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping("/books")
     public List<Book> book() {
-        List<Book> books = new ArrayList<>();
-        bookService.findAll().forEach(books::add);
-        return books;
+        return bookService.findAllBooks();
     }
 
     @PostMapping(value = "/book")
     public Book addBook(@RequestBody Book book) {
-        return bookService.save(book);
+        return bookService.addBook(book);
     }
 
     @GetMapping(value = "/book/author")
     public List<Book> booksByAuthorLastName(@RequestParam("author") String author) {
-        return bookService.findBooksByAuthorLastName(author);
+        return bookService.findBooksByAuthor(author);
     }
 
     @GetMapping(value = "/book/title")
     public List<Book> booksByTitle(@RequestParam("title") String title) {
-        return bookService.findBookByTitle(title);
+        return bookService.findBooksByTitle(title);
     }
 
     @GetMapping(value = "/book/{id}")
     public Book getBookById(@PathVariable("id") int id) {
-        return bookService.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+        return bookService.getBookById(id);
 
     }
 

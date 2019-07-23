@@ -11,10 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 
@@ -60,6 +62,15 @@ public class BookControllerTest {
 
         assertEquals(2, bookService.findBooksByAuthor(name).size());
 
+    }
+
+    @Test
+    public void shouldReturnBookById() {
+        when(repository.findById(1)).thenReturn(Optional.of(new Book("Kafka", "Franz", "Proces")));
+        Book book = new Book("Kafka", "Franz", "Proces");
+        Book wrong = new Book("Mroz", "Remigiusz", "Kasacja");
+        assertEquals(book, bookService.getBookById(1));
+        assertNotEquals(wrong, bookService.getBookById(1));
     }
 
 

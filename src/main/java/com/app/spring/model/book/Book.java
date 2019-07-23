@@ -1,9 +1,14 @@
 package com.app.spring.model.book;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Book")
+@Data
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +25,6 @@ public class Book {
     private String authorLastName;
 
 
-    public Book() {
-    }
 
     public Book(String authorLastName, String authorFirstName, String title) {
         this.title = title;
@@ -30,42 +33,4 @@ public class Book {
 
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthorFirstName() {
-        return authorFirstName;
-    }
-
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
-    }
-
-    public String getAuthorLastName() {
-        return authorLastName;
-    }
-
-    public void setAuthorLastName(String authorLastName) {
-        this.authorLastName = authorLastName;
-    }
-
-
-    @Override
-    public String toString() {
-        return
-                "ID: " + id + " Title: " + title + " Author: " + authorFirstName + " " + authorLastName;
-    }
 }

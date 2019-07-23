@@ -24,6 +24,7 @@ public class JwtFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
     }
 
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
@@ -50,13 +51,6 @@ public class JwtFilter extends BasicAuthenticationFilter {
             username = jwt.getClaims().get("name").asString();
             role = jwt.getClaims().get("role").asString();
         }
-
-
-
-
-
-
-
 
         Set<SimpleGrantedAuthority> simpleGrantedAuthorities = Collections.singleton(new SimpleGrantedAuthority(role));
 

@@ -2,6 +2,7 @@ package com.app.spring.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,24 +21,20 @@ import java.util.Set;
 public class JwtFilter extends BasicAuthenticationFilter {
 
 
-    protected JwtFilter(AuthenticationManager authenticationManager) {
+    public JwtFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-
-        String header = request.getHeader("Authorization");
-
+        String header = request.getHeader(HttpHeaders.AUTHORIZATION);
         UsernamePasswordAuthenticationToken authResult = getAuthenticationByToken(header);
-
         SecurityContextHolder.getContext().setAuthentication(authResult);
         chain.doFilter(request, response);
 
-
     }
+
 
     private UsernamePasswordAuthenticationToken getAuthenticationByToken(String header) {
 

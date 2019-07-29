@@ -1,4 +1,4 @@
-# API for Library system
+# Library management system - API
 
-Endpoints for Library Management System 
-Security based on JWT with roles: User, Admin
+REST API for library management system. 
+Implemented Security, Unit tests.

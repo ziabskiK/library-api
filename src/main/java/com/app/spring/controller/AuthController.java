@@ -24,7 +24,7 @@ public class AuthController {
         return loginService.login(user);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public String register(@RequestBody User user) {
         return registerService.register(user);
     }

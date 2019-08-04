@@ -1,0 +1,49 @@
+
+.wrapper {
+
+    width: auto;
+    height: 100%;
+    margin: 4% 5%;
+    padding: 40px 80px;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    font-size: 62.5%;
+
+
+}
+
+.wrapper h1 {
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+
+    font-family: 'Notable', sans-serif;
+
+
+}
+
+.wrapper p {
+    text-align: justify;
+    font-size: 1.6rem;
+    color: white;
+
+}
+
+.library {
+    margin: 2% 0;
+    width: auto;
+    height: 500px;
+    padding-top: 100px;
+
+    background-image: url('./lib.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1, 1);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+}

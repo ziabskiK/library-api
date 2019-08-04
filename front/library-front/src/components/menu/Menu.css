@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Notable|Roboto+Mono&display=swap');
+
+#menu {
+    margin: 2rem 5%;
+    width: auto;
+    background-color: #1c1c1c;
+    font-size: 16px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: space-between
+}
+
+#menu h1 {
+    color: white;
+    font-size: 4rem;
+    font-family: 'Notable', sans-serif;
+    margin: 4px 2px 5px;
+    padding: 2px 0;
+}
+
+#menu ul {
+    display: inline;
+    margin: 25px 2px 1px;
+    padding: 10px 5px;
+    list-style: none;
+}
+
+#menu li {
+    display: inline;
+    font-size: 1.75rem;
+    padding: 10px;
+}
+
+#menu a {
+    color: #FFF;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: #ffbb4d;
+    color: #FFF;
+    transition: 200ms linear;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#menu li .active {
+    background-color: #ffbb4d;
+    color: #FFF;
+    border-radius: 15px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#menu .logo {
+    width: 100px;
+    height: 75px;
+    margin: 30px 0 0 50px;
+    background-repeat: no-repeat;
+    background-image: url('./book_logo_small.png')
+}
+

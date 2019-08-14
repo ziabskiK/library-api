@@ -19,12 +19,12 @@ public class Checkout {
     private int id;
 
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @Column(name = "date_of_hire")
@@ -33,8 +33,7 @@ public class Checkout {
     public Checkout(Book book, User user, LocalDate dateOfHire) {
         this.book = book;
         this.user = user;
-        this.book.setCheckOut(this);
-        this.user.setCheckout(this);
+
         this.dateOfHire = dateOfHire;
 
     }

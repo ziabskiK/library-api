@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Book")
+@Table(name = "book")
 @Data
 @NoArgsConstructor
 public class Book {
@@ -23,7 +23,6 @@ public class Book {
 
     @Column(name = "author_last_name")
     private String authorLastName;
-
 
 
     public Book(String authorLastName, String authorFirstName, String title) {

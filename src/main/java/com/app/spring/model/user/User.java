@@ -1,4 +1,4 @@
-package com.app.spring.model.book.user;
+package com.app.spring.model.user;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,6 +39,7 @@ public class User {
     private String role = "USER";
 
 
+
     public User(@NonNull String password, @NonNull String email) {
         this.password = password;
         this.email = email;
@@ -49,6 +50,11 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.role = "USER";
+    }
+
+    public User(@NonNull @Email String email, @NonNull String firstName, @NonNull String lastName) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }

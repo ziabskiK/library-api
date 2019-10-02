@@ -16,12 +16,13 @@ public class TokenServiceTest {
 
     @Before
     public void setUp() {
-        token = TokenService.createToken("karol", "cba", "USER");
+         token = TokenService.createToken(1L, "pass", "USER", "USER", "USER", "user@user");
     }
 
     @Test
     public void validateToken() {
-        String expected = TokenService.createToken("karol", "cba", "USER");
+        String expected = TokenService.createToken(1L, "pass", "USER", "USER", "USER", "user@user");
+
         assertEquals(expected, token);
     }
 

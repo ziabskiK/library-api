@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "hire")
+@Table(name = "checkout")
 @Data
 @NoArgsConstructor
 public class Checkout {
@@ -19,7 +19,7 @@ public class Checkout {
     private int id;
 
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 
@@ -27,7 +27,7 @@ public class Checkout {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "date_of_hire")
+    @Column(name = "date_of_checkout")
     private LocalDate dateOfHire;
 
     public Checkout(Book book, User user, LocalDate dateOfHire) {

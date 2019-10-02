@@ -22,11 +22,12 @@ public class LibrarySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
-                .antMatchers(HttpMethod.GET, "/book/**").permitAll()
+                .antMatchers(HttpMethod.POST, "**/login/**", "/register").permitAll()
+                .antMatchers(HttpMethod.GET, "**/book/**").permitAll()
                 .antMatchers("/user").authenticated()
                 .antMatchers("/admin").access("hasRole('ADMIN')")
                 .and()
+                .csrf().disable()
                 .addFilter(new JwtFilter(authenticationManager()));
 
     }

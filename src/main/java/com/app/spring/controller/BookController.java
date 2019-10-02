@@ -26,15 +26,6 @@ public class BookController {
         return bookService.addBook(book);
     }
 
-    @GetMapping(value = "/book/author")
-    public List<Book> booksByAuthorLastName(@RequestParam("author") String author) {
-        return bookService.findBooksByAuthor(author);
-    }
-
-    @GetMapping(value = "/book/title")
-    public List<Book> booksByTitle(@RequestParam("title") String title) {
-        return bookService.findBooksByTitle(title);
-    }
 
     @GetMapping(value = "/book/{id}")
     public Book getBookById(@PathVariable("id") int id) {

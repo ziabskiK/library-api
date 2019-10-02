@@ -1,7 +1,7 @@
 package com.app.spring.service.auth;
 
 import com.app.spring.exception.UserExistsInDatabaseException;
-import com.app.spring.model.book.user.User;
+import com.app.spring.model.user.User;
 import com.app.spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +24,15 @@ public class RegisterService {
 
         if (userRepository.findUserByEmail(user.getEmail()) == null) {
 
-            user.setPassword(encoder().encode(user.getPassword()));
-            userRepository.save(user);
-            return "Success!";
+            try {
+
+                user.setPassword(encoder().encode(user.getPassword()));
+                userRepository.save(user);
+                return "Success!";
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+
         }
 
         throw new UserExistsInDatabaseException();

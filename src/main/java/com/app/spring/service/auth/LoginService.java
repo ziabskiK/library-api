@@ -2,7 +2,7 @@ package com.app.spring.service.auth;
 
 
 import com.app.spring.exception.IncorrectRequestException;
-import com.app.spring.model.book.user.User;
+import com.app.spring.model.user.User;
 import com.app.spring.repository.UserRepository;
 import com.app.spring.service.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class LoginService {
 
     private final UserRepository repository;
 
-    final PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
     @Autowired
     public LoginService(UserRepository repository, PasswordEncoder encoder) {
@@ -31,7 +31,7 @@ public class LoginService {
 
             //return token
             if (encoder.matches(user.getPassword(), userFromDb.getPassword())) {
-                return TokenService.createToken(user.getEmail(), user.getPassword(), userFromDb.getRole());
+                return TokenService.createToken(userFromDb.getId(), user.getPassword(), userFromDb.getRole(), userFromDb.getFirstName(), userFromDb.getLastName(), userFromDb.getEmail());
             }
 
 

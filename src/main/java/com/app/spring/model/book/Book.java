@@ -1,5 +1,8 @@
 package com.app.spring.model.book;
 
+import com.app.spring.model.author.Author;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,19 +20,14 @@ public class Book {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "genre")
+    private String genre;
 
-    @Column(name = "author_first_name")
-    private String authorFirstName;
-
-    @Column(name = "author_last_name")
-    private String authorLastName;
-
-
-    public Book(String authorLastName, String authorFirstName, String title) {
-        this.title = title;
-        this.authorFirstName = authorFirstName;
-        this.authorLastName = authorLastName;
-
-    }
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")
+    private Author author;
 
 }

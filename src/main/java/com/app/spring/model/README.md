@@ -70,3 +70,24 @@ Analogicznie
   }
 
 }
+Udało mi się uzyskać:
+
+{
+    "id": 1,
+    "title": "Kasacja",
+    "genre": "Kryminał",
+    "author": {
+        "id": 1,
+        "firstName": "Remigiusz",
+        "lastName": "Mróz",
+        "dateOfBirth": "1987-01-15",
+       __"books": [
+            {
+                "id": 1, 
+                "title": "Kasacja",
+                "genre": "Kryminał",
+                "author": 1
+            }
+        ]__
+    }
+}
